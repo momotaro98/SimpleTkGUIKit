@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 #
-#   brief:  Simple Tkinter GUI kit library 
+#   brief:  Simple tkinter GUI kit library 
 #   author: Atsushi Sakai
 #   Copyright (c): 2015 Atsushi Sakai
 #
-import Tkinter
-import tkFileDialog
+import tkinter
+from tkinter import filedialog
 
 class SimpleTkGUIKit:
        
@@ -18,9 +18,9 @@ class SimpleTkGUIKit:
             fileTypes: you can choise file extension
                 ex) fileTypes=[('Excel Files', '.xlsx')]
         """
-        root=Tkinter.Tk()
+        root=tkinter.Tk()
         root.withdraw()
-        filepath = tkFileDialog.askopenfilenames(filetypes = fileTypes, parent=root)
+        filepath = filedialog.askopenfilenames(filetypes = fileTypes, parent=root)
 
         if isinstance(filepath,str):
             fileList=filepath.split(" ")
@@ -44,20 +44,20 @@ class SimpleTkGUIKit:
 
         return (seldctedItem, selectedindex)
         """
-        root = Tkinter.Tk()
+        root = tkinter.Tk()
         root.title(title)
-        self.val = Tkinter.IntVar()
+        self.val = tkinter.IntVar()
         self.val.set(0)
 
         if msg!="":
-            Tkinter.Label(root, text=msg).pack()
+            tkinter.Label(root, text=msg).pack()
 
         index=0
         for item in selectList:
-            Tkinter.Radiobutton(root, text=item, variable=self.val, value=index).pack(anchor=Tkinter.W)
+            tkinter.Radiobutton(root, text=item, variable=self.val, value=index).pack(anchor=tkinter.W)
             index+=1
 
-        Tkinter.Button(root, text="OK", fg="black", command=root.quit).pack()
+        tkinter.Button(root, text="OK", fg="black", command=root.quit).pack()
         root.mainloop()
         root.destroy()
 
@@ -76,18 +76,18 @@ class SimpleTkGUIKit:
         return (seldctedItem, selectedindex)
 
         """
-        root = Tkinter.Tk()
+        root = tkinter.Tk()
         root.title(title)
 
-        label = Tkinter.Label(root,text=msg)
+        label = tkinter.Label(root,text=msg)
         label.pack()
 
-        listbox = Tkinter.Listbox(root)
+        listbox = tkinter.Listbox(root)
         for i in selectList:
-            listbox.insert(Tkinter.END, i)
+            listbox.insert(tkinter.END, i)
         listbox.pack()
 
-        Tkinter.Button(root, text="OK", fg="black", command=root.quit).pack()
+        tkinter.Button(root, text="OK", fg="black", command=root.quit).pack()
         root.mainloop()
 
         selected=listbox.get(listbox.curselection())
@@ -106,20 +106,20 @@ class SimpleTkGUIKit:
         return selected dictionary
             {'sample b': False, 'sample c': False, 'sample a': False}
         """
-        root = Tkinter.Tk()
+        root = tkinter.Tk()
         root.title(title)
 
-        label = Tkinter.Label(root,text=msg)
+        label = tkinter.Label(root,text=msg)
         label.pack()
 
         optList=[]
         for item in selectList:
-            opt = Tkinter.BooleanVar()
+            opt = tkinter.BooleanVar()
             opt.set(False)
-            Tkinter.Checkbutton(root, text = item, variable =opt).pack()
+            tkinter.Checkbutton(root, text = item, variable =opt).pack()
             optList.append(opt)
 
-        Tkinter.Button(root, text="OK", fg="black", command=root.quit).pack()
+        tkinter.Button(root, text="OK", fg="black", command=root.quit).pack()
         root.mainloop()
         root.destroy()
 
@@ -141,21 +141,21 @@ class SimpleTkGUIKit:
         return data dictionary like:
         {'y': '5.0', 'x': '100', 'z': 'save'}
         """
-        root = Tkinter.Tk()
+        root = tkinter.Tk()
         root.title(title)
 
-        label = Tkinter.Label(root,text=msg)
+        label = tkinter.Label(root,text=msg)
         label.pack()
 
         entries=[]
         for item in dataList:
-            Tkinter.Label(root,text=item).pack()
-            entry=Tkinter.Entry(root)
+            tkinter.Label(root,text=item).pack()
+            entry=tkinter.Entry(root)
             entry.pack()
             entries.append(entry)
 
         #print entries
-        Tkinter.Button(root, text="OK", fg="black", command=root.quit).pack()
+        tkinter.Button(root, text="OK", fg="black", command=root.quit).pack()
         root.mainloop()
 
         result={}
