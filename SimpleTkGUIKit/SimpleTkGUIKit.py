@@ -30,7 +30,7 @@ class SimpleTkGUIKit:
             fileList=filepath
 
         root.destroy()
-        print str(len(fileList))+" files are selected"
+        print(str(len(fileList))+" files are selected")
 
         return fileList
 
@@ -61,7 +61,7 @@ class SimpleTkGUIKit:
         root.mainloop()
         root.destroy()
 
-        print selectList[self.val.get()]+" is selected"
+        print(selectList[self.val.get()]+" is selected")
         return (selectList[self.val.get()], self.val.get())
 
     @classmethod
@@ -91,7 +91,7 @@ class SimpleTkGUIKit:
         root.mainloop()
 
         selected=listbox.get(listbox.curselection())
-        print selected+" is selected" 
+        print(selected+" is selected")
         root.destroy()
         return (selected,selectList.index(selected))
 
@@ -127,7 +127,7 @@ class SimpleTkGUIKit:
         for (opt, select) in zip(optList,selectList):
             result[select]=opt.get()
 
-        print result
+        print(result)
         return result
 
     @classmethod
@@ -163,37 +163,5 @@ class SimpleTkGUIKit:
             result[data]=entry.get()
 
         root.destroy()
-        print result
+        print(result)
         return result
-
-
-
-if __name__ == '__main__':
-    #Test
-
-    print "GetFilePathsWithDialog"
-    fileList=SimpleTkGUIKit.GetFilePathsWithDialog()
-    print fileList
-    fileList=SimpleTkGUIKit.GetFilePathsWithDialog(fileTypes=[('CSV Files', '.csv')])
-    print fileList
-
-    print "GetRadioButtonSelect"
-    (selected,index)=SimpleTkGUIKit.GetRadioButtonSelect(["sample a","sample b","sample c"])
-    print selected
-    (selected,index)=SimpleTkGUIKit.GetRadioButtonSelect(["Red","Green","Blue"],title="Color Select",msg="Please select color")
-    print selected
-
-    print "GetListSelect"
-    (selected,index)=SimpleTkGUIKit.GetListSelect(["sample a","sample b","sample c"])
-    print (selected,index)
-    (selected,index)=SimpleTkGUIKit.GetListSelect(["sample a","sample b","sample c"], title="Select sample", msg="Please select sample")
-    print (selected,index)
-
-    print "GetCheckButtonSelect"
-    optList=SimpleTkGUIKit.GetCheckButtonSelect(["sample a","sample b","sample c"], title="Select sample", msg="Please select sample")
-
-    print "GetEntries"
-    dataList=SimpleTkGUIKit.GetEntries(["x","y","z"], title="set entris", msg="Please set entries")
-    print dataList
-
-
